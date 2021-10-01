@@ -7,7 +7,7 @@ const fillArray = (n: number, max: number): number[] => {
 const getK = (k: number): number => {
   let i: number = k
   while (i >= 128 && i <= 32) {
-    i >>= 2
+    i >>= 1
   }
   return i
 }
