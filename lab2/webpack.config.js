@@ -7,7 +7,7 @@ const filename = ext => `bundle.[contenthash].${ext}`
 module.exports = ({ mode }) => ({
   mode: mode,
   devServer: {
-    port: 3001,
+    port: 3010,
     hot: true
   },
   entry: path.resolve(__dirname, './src/index.ts'),
