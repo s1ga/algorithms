@@ -4,6 +4,14 @@ const fillArray = (n: number, max: number): number[] => {
   return [...new Array(n)].map(() => getRandom(max))
 }
 
+const getK = (k: number): number => {
+  let i: number = k
+  while (i >= 64) {
+    i = Math.floor(i / 2)
+  }
+  return i
+}
+
 interface Node<T> {
   value: T
   next: Node<T>
@@ -43,5 +51,6 @@ class List<T> {
 export {
   getRandom,
   fillArray,
+  getK,
   List
 }
