@@ -3,10 +3,14 @@ interface IHashTable {
 }
 
 export class BaseHashTable {
-  public readonly hashTable: IHashTable // TODO: make protected
+  private readonly hashTable: IHashTable
 
   constructor() {
     this.hashTable = {}
+  }
+
+  public get table(): IHashTable {
+    return this.hashTable
   }
 
   protected get length(): number {

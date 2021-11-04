@@ -46,7 +46,7 @@ export class HashTable extends BaseHashTable {
           this.setElWithLinearProbing(hash, value)
           break
         case "double hashing":
-          this.setElWithQuadraticProbing(hash, getAnotherHash(key), value)
+          this.setElWithDoubleHashing(hash, getAnotherHash(key), value)
           break
         default:
           console.warn('No such collision handling method')
@@ -83,7 +83,7 @@ export class HashTable extends BaseHashTable {
     }
   }
 
-  private setElWithQuadraticProbing(hash: number, anotherHash: number, value: any) {
+  private setElWithDoubleHashing(hash: number, anotherHash: number, value: any) {
     let i: number = 1
     const doubleHash = () => (hash + i * anotherHash) % this.size
     while (this.getValue(doubleHash()) !== undefined) {
