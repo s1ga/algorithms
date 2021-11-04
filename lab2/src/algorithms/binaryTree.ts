@@ -147,7 +147,7 @@ export class BinarySearchTree<T> {
       } else {
         this._insert(root.left, newNode)
       }
-    } else {
+    } else if (newNode.data > root.data) {
       if (root.right === null) {
         root.right = newNode
       } else {
