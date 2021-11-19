@@ -27,12 +27,13 @@ export class HashTable extends BaseHashTable {
 
   }
 
-  public set(key: any, value: any): void {
+  public set(key: any, value: any, c: number): void {
     if (this.isFull) {
+      console.warn('Hash table is full')
       return
     }
 
-    const hash = getHash(key, 0.61, this.size) // TODO: compute my own constant
+    const hash = getHash(key, c, this.size)
 
     if (this.getValue(hash) === undefined) {
       this.setValue(hash, value)
@@ -86,7 +87,8 @@ export class HashTable extends BaseHashTable {
   private setElWithDoubleHashing(hash: number, anotherHash: number, value: any) {
     let i: number = 1
     const doubleHash = () => (hash + i * anotherHash) % this.size
-    while (this.getValue(doubleHash()) !== undefined) {
+    while (this.getValue(doubleHash()) !== undefined && i <= this.size) {
+      this.collisionCounter += 1
       i += 1
     }
 
